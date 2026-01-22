@@ -20,6 +20,11 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
+
+use XoopsModules\Wggithub\{
+    Helper
+};
+
 /**
  * function add selected cats to block
  *
@@ -109,7 +114,7 @@ function wggithubMetaDescription($content)
 function wggithub_RewriteUrl($module, $array, $type = 'content')
 {
     $comment = '';
-    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $helper = Helper::getInstance();
     //$readmesHandler = $helper->getHandler('readmes');
     $lenght_id = $helper->getConfig('lenght_id');
     $rewrite_url = $helper->getConfig('rewrite_url');
@@ -197,7 +202,7 @@ function wggithub_RewriteUrl($module, $array, $type = 'content')
 function wggithub_Filter($url, $type = '') {
 
     // Get regular expression from module setting. default setting is : `[^a-z0-9]`i
-    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $helper = Helper::getInstance();
     $regular_expression = $helper->getConfig('regular_expression');
 
     $url = \strip_tags($url);

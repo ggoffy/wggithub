@@ -28,8 +28,6 @@ namespace XoopsModules\Wggithub\Common;
  * echo $breadcrumb->render();
  */
 
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Common;
 
 \defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 

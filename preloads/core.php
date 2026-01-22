@@ -22,6 +22,32 @@
 class WggithubCorePreload extends \XoopsPreloadItem
 {
     // to add PSR-4 autoloader
+    private const AUTOLOADER_PATH = '/vendor/autoload.php';
+
+
+    /**
+     * eventCoreIncludeCommonAuthSuccess
+     */
+    public static function eventCoreIncludeCommonAuthSuccess(): void
+    {
+        self::initializeAutoloader();
+    }
+
+
+    /**
+     * @return void
+     */
+    private static function initializeAutoloader(): void
+    {
+        $autoloader = \dirname(__DIR__) . self::AUTOLOADER_PATH;
+
+        if (!\file_exists($autoloader)) {
+            // Throw an exception for better error handling
+            throw new \RuntimeException("xwhoops25/vendor/autoload.php not found, was 'composer install' done?");
+        }
+
+        require_once $autoloader;
+    }
 
     /**
      * @param $args
@@ -30,4 +56,5 @@ class WggithubCorePreload extends \XoopsPreloadItem
     {
         include __DIR__ . '/autoloader.php';
     }
+
 }

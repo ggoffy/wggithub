@@ -21,9 +21,10 @@
  */
 
 use Xmf\Request;
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
-use XoopsModules\Wggithub\Common;
+use XoopsModules\Wggithub\{
+    Constants,
+    Common\Confirm
+};
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
@@ -156,7 +157,7 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $repositoriesObj->getHtmlErrors());
             }
         } else {
-            $customConfirm = new Common\Confirm(
+            $customConfirm = new Confirm(
                 ['ok' => 1, 'repo_id' => $repoId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $repositoriesObj->getVar('repo_fullname')));

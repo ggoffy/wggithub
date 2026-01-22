@@ -20,12 +20,15 @@
  */
 
 use Xmf\Request;
+use XoopsModules\Wggithub\ {
+    Common\ModuleFeedback
+};
 
 include __DIR__ . '/header.php';
 
 $adminObject = \Xmf\Module\Admin::getInstance();
 
-$feedback = new \XoopsModules\Wggithub\Common\ModuleFeedback();
+$feedback = new ModuleFeedback();
 
 // It recovered the value of argument op in URL$
 $op                 = Request::getString('op', 'list');

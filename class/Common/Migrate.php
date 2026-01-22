@@ -12,7 +12,6 @@ namespace XoopsModules\Wggithub\Common;
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-use XoopsModules\Wggithub\Common;
 
 /**
  * Class Migrate synchronize existing tables with target schema
@@ -31,7 +30,7 @@ class Migrate extends \Xmf\Database\Migrate
     /**
      * @param \XoopsModules\Wggithub\Common\Configurator|null $configurator
      */
-    public function __construct(Common\Configurator $configurator = null)
+    public function __construct(Configurator $configurator = null)
     {
         if (null !== $configurator) {
             $this->renameTables = $configurator->renameTables;

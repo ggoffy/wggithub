@@ -8,7 +8,9 @@
  * @link            https://xoops.org XOOPS
  */
 
-use XoopsModules\Wggithub;
+use XoopsModules\Wggithub\{
+    Helper
+};
 
 /**
  * Prepares system prior to attempting to uninstall module
@@ -35,7 +37,7 @@ function xoops_module_uninstall_wggithub(\XoopsModule $module)
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 
-    $helper = Wggithub\Helper::getInstance();
+    $helper = Helper::getInstance();
 
     $success = true;
     $helper->loadLanguage('admin');

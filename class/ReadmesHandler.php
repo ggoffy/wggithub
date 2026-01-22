@@ -23,10 +23,10 @@ namespace XoopsModules\Wggithub;
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-use XoopsModules\Wggithub;
+
 use XoopsModules\Wggithub\{
-    Constants,
-    MDParser
+    Github\GithubClient,
+    MDParser\Parsedown
 };
 
 
@@ -133,11 +133,11 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
      */
     public function updateTableReadmes()
     {
-        $helper = Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         $repositoriesHandler = $helper->getHandler('Repositories');
         $readmesHandler = $helper->getHandler('Readmes');
 
-        $libRepositories = new Wggithub\Github\Repositories();
+        $libRepositories = new Repositories();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
@@ -194,10 +194,10 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
      */
     public function updateReadmes($repoId, $userName, $repoName)
     {
-        $helper = Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         $readmesHandler = $helper->getHandler('Readmes');
 
-        $githubClient = new Wggithub\Github\GithubClient();
+        $githubClient = new GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
@@ -252,7 +252,7 @@ class ReadmesHandler extends \XoopsPersistableObjectHandler
     public function convertMD($contentDecoded)
     {
         // parse MD file
-        $Parsedown = new MDParser\Parsedown();
+        $Parsedown = new Parsedown();
         $contentClean = $Parsedown->text($contentDecoded);
 
         return $contentClean;

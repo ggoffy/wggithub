@@ -23,7 +23,7 @@
 use Xmf\Request;
 use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\ {
-    Common,
+    Common\Confirm,
     Github\GithubClient
 };
 
@@ -168,7 +168,7 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('errors', $errors);
             }
         } else {
-            $customConfirm = new Common\Confirm(
+            $customConfirm = new Confirm(
                 ['ok' => 1, 'dir_id' => $dirId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $dirName));

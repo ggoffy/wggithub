@@ -23,8 +23,10 @@ namespace XoopsModules\Wggithub;
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\MDParser;
+
+use XoopsModules\Wggithub\{
+    MDParser\Parsedown
+};
 
 \defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
@@ -84,7 +86,7 @@ class Readmes extends \XoopsObject
      */
     public function getFormReadmes($action = false, $start = 0, $limit = 0)
     {
-        $helper = \XoopsModules\Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -132,8 +134,8 @@ class Readmes extends \XoopsObject
      */
     public function getValuesReadmes($keys = null, $format = null, $maxDepth = null)
     {
-        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
-        $utility = new \XoopsModules\Wggithub\Utility();
+        $helper  = Helper::getInstance();
+        $utility = new Utility();
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']            = $this->getVar('rm_id');
         $repositoriesHandler = $helper->getHandler('Repositories');
@@ -151,7 +153,7 @@ class Readmes extends \XoopsObject
         $ret['content']       = $this->getVar('rm_content', 'e');
         $contentDecoded = base64_decode($this->getVar('rm_content', 'n'));
         if ('.MD' == \substr(strtoupper($rmName), -3)) {
-            $Parsedown = new MDParser\Parsedown();
+            $Parsedown = new Parsedown();
             $contentEncoded = $Parsedown->text($contentDecoded);
             $baseUrl = \str_replace('/blob/', '/raw/', $baseUrl);
             $contentClean = $this->cleaningMD($contentEncoded, $baseUrl);

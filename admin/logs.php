@@ -21,9 +21,10 @@
  */
 
 use Xmf\Request;
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
-use XoopsModules\Wggithub\Common;
+use XoopsModules\Wggithub\{
+    Common\Confirm
+};
+
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
@@ -115,7 +116,7 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $logsObj->getHtmlErrors());
             }
         } else {
-            $customConfirm = new Common\Confirm(
+            $customConfirm = new Confirm(
                 ['ok' => 1, 'log_id' => $logId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $logsObj->getVar('log_id') . ': ' . $logsObj->getVar('log_details')));
@@ -135,7 +136,7 @@ switch ($op) {
             $logsHandler->deleteAll(null, true);
             \redirect_header('logs.php', 3, \_AM_WGGITHUB_FORM_DELETE_OK);
         } else {
-            $customConfirm = new Common\Confirm(
+            $customConfirm = new Confirm(
                 ['ok' => 1, 'op' => 'clear'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETEALL, 'wggithub_logs'));

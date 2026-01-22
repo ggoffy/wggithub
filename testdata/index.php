@@ -15,30 +15,30 @@
  */
 
 use Xmf\Database\TableLoad;
-use Xmf\Module\Helper;
 use Xmf\Request;
 use Xmf\Yaml;
-use XoopsModules\Wggithub;
 use XoopsModules\Wggithub\{
-    Common,
+    Common\Configurator,
+    Common\Migrate,
+    Helper,
     Utility
 };
 
 require_once \dirname(__DIR__, 3) . '/include/cp_header.php';
 require \dirname(__DIR__) . '/preloads/autoloader.php';
 
-$op = \Xmf\Request::getCmd('op', '');
+$op = Request::getCmd('op', '');
 
 $moduleDirName = \basename(\dirname(__DIR__));
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 
-$helper = Wggithub\Helper::getInstance();
+$helper = Helper::getInstance();
 // Load language files
 $helper->loadLanguage('common');
 
 switch ($op) {
     case 'load':
-        if (\Xmf\Request::hasVar('ok', 'REQUEST') && 1 == $_REQUEST['ok']) {
+        if (Request::hasVar('ok', 'REQUEST') && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('../admin/index.php', 3, \implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
             }
@@ -62,8 +62,8 @@ function loadSampleData()
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 
-    $utility      = new Wggithub\Utility();
-    $configurator = new Common\Configurator();
+    $utility      = new Utility();
+    $configurator = new Configurator();
 
     $tables = Helper::getHelper($moduleDirName)->getModule()->getInfo('tables');
 
@@ -101,7 +101,7 @@ function saveSampleData()
 {
     global $xoopsConfig;
 
-    $configurator = new Common\Configurator();
+    $configurator = new Configurator();
 
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
@@ -145,7 +145,7 @@ function exportSchema()
 
     try {
         // TODO set exportSchema
-        //        $migrate = new Wggithub\Migrate($moduleDirName);
+        //        $migrate = new Migrate($moduleDirName);
         //        $migrate->saveCurrentSchema();
         //
         //        \redirect_header('../admin/index.php', 1, \constant('CO_' . $moduleDirNameUpper . '_' . 'EXPORT_SCHEMA_SUCCESS'));

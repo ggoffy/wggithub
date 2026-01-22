@@ -20,15 +20,17 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-use XoopsModules\Wggithub\Constants;
+use XoopsModules\Wggithub\{
+    Constants
+};
 
 $moduleDirName      = \basename(__DIR__);
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGGITHUB_NAME,
-    'version'             => '1.5.2',
-    'module_status'       => 'RC1',
+    'version'             => '1.5.3',
+    'module_status'       => 'Beta1',
     'description'         => \_MI_WGGITHUB_DESC,
     'author'              => 'Goffy - XOOPS Development Team',
     'author_mail'         => 'goffy@wedega.com',

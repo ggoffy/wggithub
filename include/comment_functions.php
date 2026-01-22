@@ -20,6 +20,10 @@
  * @author         TDM XOOPS - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
+use XoopsModules\Wggithub\{
+    Helper
+};
+
 /**
  * CommentsUpdate
  *
@@ -30,7 +34,7 @@
 function wggithubCommentsUpdate($itemId, $itemNumb)
 {
     // Get instance of module
-    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $helper = Helper::getInstance();
     $repositoriesHandler = $helper->getHandler('Repositories');
     $repoId = (int)$itemId;
     $repositoriesObj = $repositoriesHandler->get($repoId);
@@ -51,7 +55,7 @@ function wggithubCommentsApprove($comment)
 {
     // Notification event
     // Get instance of module
-    $helper = \XoopsModules\Wggithub\Helper::getInstance();
+    $helper = Helper::getInstance();
     $repositoriesHandler = $helper->getHandler('Repositories');
     $repoId = $comment->getVar('com_itemid');
     $repositoriesObj = $repositoriesHandler->get($repoId);

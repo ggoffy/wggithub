@@ -21,13 +21,10 @@
  */
 
 use Xmf\Request;
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
-use XoopsModules\Wggithub\Common;
-
-use XoopsModules\Wggithub\Github\Http;
-use XoopsModules\Wggithub\Github\Http\BadResponseException;
-
+use XoopsModules\Wggithub\{
+    Common\Confirm,
+    Github\GithubClient
+};
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
@@ -139,7 +136,7 @@ switch ($op) {
                 $GLOBALS['xoopsTpl']->assign('error', $settingsObj->getHtmlErrors());
             }
         } else {
-            $customConfirm = new Common\Confirm(
+            $customConfirm = new Confirm(
                 ['ok' => 1, 'set_id' => $setId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
                 \sprintf(\_AM_WGGITHUB_FORM_SURE_DELETE, $settingsObj->getVar('set_token')));
@@ -154,7 +151,7 @@ switch ($op) {
         $adminObject->addItemButton(\_AM_WGGITHUB_SETTINGS_LIST, 'settings.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
 
-        $client = Wggithub\Github\GithubClient::getInstance();
+        $client = GithubClient::getInstance();
         $result = $client->testApi1('emojis');
         if ($result) {
             $info = 'Github/GithubClient testApi1 (reading github public repos) successfully finished';

@@ -132,7 +132,7 @@ class LogsHandler extends \XoopsPersistableObjectHandler
      */
     public function updateTableLogs($type, $detail, $result)
     {
-        $helper = Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         $logsHandler = $helper->getHandler('Logs');
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;

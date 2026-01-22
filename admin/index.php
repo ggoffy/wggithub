@@ -21,7 +21,9 @@
  */
 
 use Xmf\Request;
-use XoopsModules\Wggithub\Common;
+use XoopsModules\Wggithub\{
+    Common\Configurator
+};
 
 include_once \dirname(__DIR__) . '/preloads/autoloader.php';
 require __DIR__ . '/header.php';
@@ -53,7 +55,7 @@ $adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_README
 $adminObject->addInfoBoxLine(\sprintf( '<label>' . \_AM_WGGITHUB_THEREARE_RELEASES . '</label>', $countReleases));
 
 // Upload Folders
-$configurator = new Common\Configurator();
+$configurator = new Configurator();
 if ($configurator->uploadFolders && \is_array($configurator->uploadFolders)) {
     foreach (\array_keys($configurator->uploadFolders) as $i) {
         $folder[] = $configurator->uploadFolders[$i];

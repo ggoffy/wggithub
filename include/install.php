@@ -20,8 +20,12 @@
  * @author         Wedega - Email:<webmaster@wedega.com> - Website:<https://wedega.com> XOOPS Project (www.xoops.org) $
  */
 
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Common;
+
+use XoopsModules\Wggithub\{
+    Common\Configurator,
+    Helper,
+    Utility
+};
 
 /**
  * @param \XoopsModule $module
@@ -31,7 +35,7 @@ function xoops_module_pre_install_wggithub(\XoopsModule $module)
 {
     require \dirname(__DIR__) . '/preloads/autoloader.php';
 
-    $utility = new Wggithub\Utility();
+    $utility = new Utility();
 
     //check for minimum XOOPS version
     $xoopsSuccess = $utility::checkVerXoops($module);
@@ -60,9 +64,9 @@ function xoops_module_install_wggithub(\XoopsModule $module)
     /** @var Wggithub\Helper $helper */ 
     /** @var Wggithub\Utility $utility */
     /** @var Common\Configurator $configurator */
-    $helper       = Wggithub\Helper::getInstance();
-    $utility      = new Wggithub\Utility();
-    $configurator = new Common\Configurator();
+    $helper       = Helper::getInstance();
+    $utility      = new Utility();
+    $configurator = new Configurator();
 
     // Load language files
     $helper->loadLanguage('admin');

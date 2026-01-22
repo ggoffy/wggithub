@@ -20,11 +20,13 @@ namespace XoopsModules\Wggithub\Github;
  * @author       Goffy - XOOPS Development Team
  */
 
-use XoopsModules\Wggithub;
+use Milo\Github\{
+    Api,
+    OAuth
+};
 use XoopsModules\Wggithub\{
     Helper,
-    Constants,
-    Github
+    Constants
 };
 
 /**
@@ -95,16 +97,16 @@ class GithubClient extends Api
     }
 
     public function testApi2($url) {
-        $api = new Github\Api;
+        $api = new Api;
 
-        $token = new Github\OAuth\Token('{myKey}', 'bearer', ['repo', 'user', 'public_repo']);
+        $token = new OAuth\Token('{myKey}', 'bearer', ['repo', 'user', 'public_repo']);
         $api->setToken($token);
         $response = $api->get(static::BASE_URL . $url);
 
         $data = $api->decode($response);
 
         /*
-        $api = new Github\Api;
+        $api = new Api;
 
         $request = $api->createRequest('GET', $url, [], [], '');
         $response = $api->request($request);
@@ -243,15 +245,15 @@ class GithubClient extends Api
      * @param bool $skipError
      * @return array|bool
      */
-    public function _get($url, $skipError = false)
+    public function get($url, $skipError = false)
     {
         $error = false;
         $errMsg = '';
 
         $logsHandler = $this->helper->getHandler('Logs');
         $logsHandler->updateTableLogs(Constants::LOG_TYPE_REQUEST, $url, 'START');
-        $api = new Github\Api;
-        $token = new Github\OAuth\Token($this->tokenAuth, 'bearer', ['repo', 'user', 'public_repo']);
+        $api = new Api;
+        $token = new OAuth\Token($this->tokenAuth, 'bearer', ['repo', 'user', 'public_repo']);
         $api->setToken($token);
         $response = $api->get($url);
         $code = $response->getCode();
