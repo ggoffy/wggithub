@@ -134,7 +134,7 @@ class RepositoriesHandler extends \XoopsPersistableObjectHandler
     public function updateTableRepositories($user, $repos = [], $updateAddtionals = true, $dirContent = 0)
     {
         $reposNb = 0;
-        $helper = \XoopsModules\Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         $repositoriesHandler = $helper->getHandler('Repositories');
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;

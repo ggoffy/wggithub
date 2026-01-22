@@ -20,9 +20,9 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Helper;
-use XoopsModules\Wggithub\Constants;
+use XoopsModules\Wggithub\{
+    Helper
+};
 
 include_once \XOOPS_ROOT_PATH . '/modules/wggithub/include/common.php';
 

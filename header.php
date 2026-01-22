@@ -20,11 +20,15 @@
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
+use XoopsModules\Wggithub\{
+    Helper
+};
+
 include \dirname(__DIR__, 2) . '/mainfile.php';
 include __DIR__ . '/include/common.php';
 $moduleDirName = \basename(__DIR__);
 
-$helper = \XoopsModules\Wggithub\Helper::getInstance();
+$helper = Helper::getInstance();
 
 // Breadcrumbs
 $xoBreadcrumbs = [];

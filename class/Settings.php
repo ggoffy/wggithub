@@ -120,8 +120,8 @@ class Settings extends \XoopsObject
      */
     public function getValuesSettings($keys = null, $format = null, $maxDepth = null)
     {
-        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
-        $utility = new \XoopsModules\Wggithub\Utility();
+        $helper  = Helper::getInstance();
+        $utility = new Utility();
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']            = $this->getVar('set_id');
         $ret['username']      = $this->getVar('set_username');

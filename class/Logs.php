@@ -122,8 +122,8 @@ class Logs extends \XoopsObject
      */
     public function getValuesLogs($keys = null, $format = null, $maxDepth = null)
     {
-        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
-        $utility = new \XoopsModules\Wggithub\Utility();
+        $helper  = Helper::getInstance();
+        $utility = new Utility();
         $editorMaxchar = $helper->getConfig('editor_maxchar');
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']           = $this->getVar('log_id');

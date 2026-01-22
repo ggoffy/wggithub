@@ -83,7 +83,7 @@ class Releases extends \XoopsObject
      */
     public function getFormReleases($action = false, $start = 0, $limit = 0)
     {
-        $helper = \XoopsModules\Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -135,7 +135,7 @@ class Releases extends \XoopsObject
      */
     public function getValuesReleases($keys = null, $format = null, $maxDepth = null)
     {
-        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
+        $helper  = Helper::getInstance();
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']          = $this->getVar('rel_id');
         $repositoriesHandler = $helper->getHandler('Repositories');

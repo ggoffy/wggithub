@@ -148,7 +148,7 @@ class SettingsHandler extends \XoopsPersistableObjectHandler
      */
     public function setPrimarySetting($setId)
     {
-        $helper  = \XoopsModules\Wggithub\Helper::getInstance();
+        $helper  = Helper::getInstance();
         $settingsObj = null;
         $settingsHandler = $helper->getHandler('Settings');
         if (isset($setId)) {

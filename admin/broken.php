@@ -21,8 +21,9 @@
  */
 
 use Xmf\Request;
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Constants;
+use XoopsModules\Wggithub\{
+    Constants
+};
 
 require __DIR__ . '/header.php';
 

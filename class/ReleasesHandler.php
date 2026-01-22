@@ -23,7 +23,9 @@ namespace XoopsModules\Wggithub;
  * @author         Goffy - XOOPS Development Team - Email:<goffy@wedega.com> - Website:<https://wedega.com>
  */
 
-use XoopsModules\Wggithub;
+use XoopsModules\Wggithub\{
+    Github\GithubClient
+};
 
 
 /**
@@ -129,11 +131,11 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
      */
     public function updateTableReleases()
     {
-        $helper = Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         $repositoriesHandler = $helper->getHandler('Repositories');
         $releasesHandler = $helper->getHandler('Releases');
 
-        $githubClient = new Wggithub\Github\GithubClient();
+        $githubClient = new GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 
@@ -197,10 +199,10 @@ class ReleasesHandler extends \XoopsPersistableObjectHandler
      */
     public function updateReleases($repoId, $userName, $repoName)
     {
-        $helper = Wggithub\Helper::getInstance();
+        $helper = Helper::getInstance();
         $releasesHandler = $helper->getHandler('Releases');
 
-        $githubClient = new Wggithub\Github\GithubClient();
+        $githubClient = new GithubClient();
 
         $submitter = isset($GLOBALS['xoopsUser']) && \is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0;
 

@@ -23,11 +23,11 @@
  * @license        GPL 2.0 or later
  */
 
-use XoopsModules\Wggithub;
-use XoopsModules\Wggithub\Common\ {
-    Configurator,
-    Migrate,
-    MigrateHelper
+use XoopsModules\Wggithub\{
+    Common\Configurator,
+    Common\Migrate,
+    Common\MigrateHelper,
+    Utility
 };
 
 /**
@@ -38,7 +38,7 @@ use XoopsModules\Wggithub\Common\ {
  */
 function xoops_module_pre_update_wggithub(\XoopsModule $module)
 {
-    $utility = new Wggithub\Utility();
+    $utility = new Utility();
 
     $xoopsSuccess = $utility::checkVerXoops($module);
     $phpSuccess   = $utility::checkVerPhp($module);
