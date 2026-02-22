@@ -3,7 +3,7 @@
 
 <h3><{$repositories_result}></h3>
 <{if $repositories_count}>
-    <table class='table table-bordered'>
+    <table class='outer'>
         <thead>
             <tr class='head'>
                 <th class='center'><{$smarty.const._AM_WGGITHUB_BROKEN_TABLE}></th>

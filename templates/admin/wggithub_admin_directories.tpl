@@ -2,7 +2,7 @@
 <{include file='db:wggithub_admin_header.tpl' }>
 
 <{if $directories_list|default:''}>
-    <table class='table table-bordered'>
+    <table class='outer'>
         <thead>
             <tr class='head'>
                 <th class="center">&nbsp;</th>

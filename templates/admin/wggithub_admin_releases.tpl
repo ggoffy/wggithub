@@ -6,7 +6,7 @@
 <{/if}>
 
 <{if $releases_count|default:0 > 0 || $noData|default:''}>
-    <table class='table table-bordered'>
+    <table class='outer'>
         <thead>
             <tr class='head'>
                 <th class="center"><{$smarty.const._AM_WGGITHUB_RELEASE_ID}></th>
